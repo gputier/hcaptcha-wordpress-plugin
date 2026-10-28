@@ -117,7 +117,7 @@ class Form {
 			return $html;
 		}
 
-		if ( ! preg_match( '#<div\s+id="(.+)"\s+class="[^"]*\bh-captcha\b[^"]*" .+></div>#', (string) $html, $m ) ) {
+		if ( ! preg_match( '#<div\s+id="([^"]+)"\s+class="[^"]*\bh-captcha\b[^"]*"[^>]*></div>#', (string) $html, $m ) ) {
 			return $html;
 		}
 

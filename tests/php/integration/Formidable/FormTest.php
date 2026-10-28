@@ -213,6 +213,12 @@ HTML;
 
 		// Success path.
 		self::assertSame( $expected, $subject->add_hcaptcha( $html_with_hcaptcha, $field, $atts ) );
+
+		// Success path when the field container is on the same line (Formidable 6.34+ strips a "none" label).
+		$container_html = '<div id="frm_field_5_container" class="frm_form_field form-field">' . $hcaptcha_div . "\n</div>";
+		$expected       = str_replace( $hcaptcha_div, $hcap_form, $container_html );
+
+		self::assertSame( $expected, $subject->add_hcaptcha( $container_html, $field, $atts ) );
 	}
 
 	/**
